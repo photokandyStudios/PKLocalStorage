@@ -2,9 +2,11 @@
 
 Version 1.0.0, Kerri Shotts (kerrishotts@gmail.com)
 
-`localStorage` is not synchronized or flushed to disk during `pause` events. Furthermore, no native operations are permitted during a `pause` event, which means that there is no mechanism, *what-so-ever* that supports the saving of app state during a `pause` event in order to prevent data loss should the app be terminated while in the background.
+`localStorage` is not synchronized or flushed to disk during `pause` events on iOS. Furthermore, no native operations are permitted during a `pause` event, which means that there is no mechanism, *what-so-ever* that supports the saving of app state during a `pause` event in order to prevent data loss should the app be terminated while in the background.
 
-Although incredibly ugly, this plugin attempts to rectify that problem. It does two things:
+This is described [here](https://groups.google.com/forum/#!msg/PhoneGap/wsP4w3Sm0YQ/fAnyUu_sZosJ) in the PhoneGap Google Group.
+
+Although incredibly ugly, this plugin attempts to rectify that problem in an easy-to-use plugin. It does two things:
 
 * It can call `pause` and `resume` handlers that are guaranteed to execute during the event. That is, you can do any JavaScript you desire during the handler *except* `setTimeout` or any native operations. While this initially sounds limiting, it *does* permit the writing of data to `localStorage`.
 * It will save any changes made to `localStorage` during these `pause` events to the app's cache directory in a file named `localStorageCache.json`. If the app is resumed without an intervening termination, the file is then deleted. But if the app is terminated prior to being resumed, the file is read and loaded back into `localStorage`. This means that by your app can check `localStorage` and know that data has been persisted.
@@ -39,7 +41,7 @@ To remove handlers, you can use `removePausehandler` and `removeResumeHandler`.
 
 ## Repository
 
-Available on [Github](). Contributions welcome!
+Available on [Github](https://github.com/photokandyStudios/PKLocalStorage). Contributions welcome!
 
 ## LICENSE
 
