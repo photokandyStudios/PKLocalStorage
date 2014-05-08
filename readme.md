@@ -18,6 +18,7 @@ It would be far better if there was a mechanism by which we could force the sqli
 * `JSON.stringify(localStorage)` - this is a hack from moment one. Should `localStorage` contain a lot of data, this operation may become problematic.
 * `JSON.parse(atob(data))` - when starting up, the cached `localStorage` data is passed over to JavaScript in **base 64**. This is a second hack on top of the first, but it ensures that the data is transferred without having to worry about escaping symbols. It *does* double the memory requirements. Therefore, if the cache has stored `5mb` of data, then JavaScript is passed a string that's a little over `10mb` large. Probably not going to work.
 * `for ... in` - once the data is passed to JavaScript, it is iterated over in order to insert the data into `localStorage`. If there are a lot of items, this is going to take awhile.
+* This plugin does not attempt to do anything should the app be forcibly terminated (or crash) in any other situation. That is to say, this plugin works only with the backgrounding of the application, not the forcible termination of the application.
 
 For the above reasons, this plugin is probably best used in the following situations:
 
