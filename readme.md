@@ -1,6 +1,6 @@
 # PKLocalStorage
 
-Version 1.0.0, Kerri Shotts (kerrishotts@gmail.com)
+Version 1.1.0, Kerri Shotts (kerrishotts@gmail.com)
 
 `localStorage` is not synchronized or flushed to disk during `pause` events on iOS. Furthermore, no native operations are permitted during a `pause` event, which means that there is no mechanism, *what-so-ever* that supports the saving of app state during a `pause` event in order to prevent data loss should the app be terminated while in the background.
 
@@ -62,3 +62,10 @@ PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS 
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
 OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
+## Change Log
+
+```
+1.0.0  First Release
+1.1.0  iOS 6 would crash due to lack of base64EncodedStringWithOptions on NSData. Fixed. 
+```
